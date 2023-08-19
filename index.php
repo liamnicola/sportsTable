@@ -10,14 +10,12 @@
     <h1>Sports Table</h1>
 
     <form action="includes/formhandler.inc.php" method="post">
-        <label>Team one: </label>
+        <label>League Name: </label>
         <input placeholder="Enter the league name" name="league"/>
         <br/>
         
         <button>Submit</button>
     </form>
     <br/>
-    
-    <p>make league teams first and use above form as an update - sql layout = teams table, match tablle </p>
-</body>
+    </body>
 </html>

@@ -1,0 +1,18 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+li {
+  padding: 5px;
+}
+
+ul a {
+  text-decoration: none;
+  color: black;
+}

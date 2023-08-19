@@ -1,3 +1,6 @@
+<style>
+<?php include './css/navbar.css' ?>
+</style>
 <ul class="nav nav-pills">
     <li class="nav-item">
         <a class="nav-link active" href="index.php">Home</a>
