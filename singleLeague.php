@@ -1,8 +1,9 @@
-<?php 
+<?php
     try {
         require_once "./includes/dbh.inc.php";
+                $id = $_GET['id'];
 
-        $query = "SELECT * FROM leagues;";
+        $query = "SELECT * FROM leagues WHERE id ='$id'";
 
         $statement = $pdo->prepare($query);
 
@@ -22,34 +23,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-    <?php include './css/table.css' ?>
-</style>
 </head>
 <body>
     <?php include("includes/navbar.inc.php");?>
-    <h1>Existing Leagues</h1>
     <div>
         <table>
-            <tr>
-                <th>League ID</th>
-                <th>League Name</th>
-                <th>Link</th>
-            </tr>
     <?php
        if (empty($results)) {
-        echo "<p> No Existing Leagues </p>";
+        echo "<p> no results</p>";
        } 
        else {
         foreach($results as $row){
-            echo "<tr>";
-            //echo "<td><a href="singleLeague.php?id=' . $row["id"] .'">";
-            echo "<td>" . htmlspecialchars($row["id"]) . "</td>";
-            echo "<td>" . htmlspecialchars($row["name"]) . "</td>";
-            echo '<td><a href="singleLeague.php?id=' . $row['id'] . '"> View Here</a></td>';
-
-            echo "</tr>";
+            echo "<h1>" . htmlspecialchars($row["name"]) . "</h1>";
         }
+
+        echo "<h2>Teams</h2>";
        }
     ?>
     </table>
