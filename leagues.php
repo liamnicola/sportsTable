@@ -46,7 +46,7 @@
             //echo "<td><a href="singleLeague.php?id=' . $row["id"] .'">";
             echo "<td>" . htmlspecialchars($row["id"]) . "</td>";
             echo "<td>" . htmlspecialchars($row["name"]) . "</td>";
-            echo '<td><a href="singleLeague.php?id=' . $row['id'] . '"> View Here</a></td>';
+            echo '<td><a href="singleLeague.php?name=' . $row['name'] . '"> View Here</a></td>';
 
             echo "</tr>";
         }

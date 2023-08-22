@@ -1,13 +1,13 @@
 <?php
     try {
         require_once "./includes/dbh.inc.php";
-                $id = $_GET['id'];
-        if($id < 1){
+                $id = $_GET['name'];
+        if(strlen($id) < 1){
             header("Location: http://localhost/sportstable/index.php");
         }
         else{
 
-        $query = "SELECT * FROM leagues WHERE id ='$id'";
+        $query = "SELECT * FROM teams WHERE league ='$id'";
 
         $statement = $pdo->prepare($query);
 
@@ -32,6 +32,7 @@
 <body>
     <?php include("includes/navbar.inc.php");?>
     <div>
+        <h1>Teams</h1>
         <table>
     <?php
        if (empty($results)) {
@@ -39,23 +40,16 @@
        } 
        else {
         foreach($results as $row){
-            echo "<h1>" . htmlspecialchars($row["name"]) . "</h1>";
+            echo "<p>" . htmlspecialchars($row["name"]) . "</p>";
+            echo "<p>" . htmlspecialchars($row["points"]) . "</p>";
+ 
         }
 
-        echo "<h2>Teams</h2>";
 
         
        }
     ?>
     </table>
-    </div>
-    <div>
-         <form action="includes/createTeam.inc.php" method="post">
-        <label>Team Name</label>
-        <input placeholder="Enter the team name" name="team"/>
-        <br/>
-        <button>Submit</button>
-    </form>
     </div>
 </body>
 </html>
