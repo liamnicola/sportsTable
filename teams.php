@@ -1,13 +1,8 @@
-<?php
+<?php 
     try {
         require_once "./includes/dbh.inc.php";
-                $id = $_GET['id'];
-        if($id < 1){
-            header("Location: http://localhost/sportstable/index.php");
-        }
-        else{
 
-        $query = "SELECT * FROM leagues WHERE id ='$id'";
+        $query = "SELECT name FROM leagues;";
 
         $statement = $pdo->prepare($query);
 
@@ -16,7 +11,6 @@
 
         $pdo = null;
         $statement = null;
-        }
     } catch (PDOException $e){
         die("Query Failed: " . $e->getMessage());
     }
@@ -28,31 +22,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+</style>
 </head>
 <body>
     <?php include("includes/navbar.inc.php");?>
-    <div>
-        <table>
-    <?php
-       if (empty($results)) {
-        echo "<p> no results</p>";
-       } 
-       else {
-        foreach($results as $row){
-            echo "<h1>" . htmlspecialchars($row["name"]) . "</h1>";
-        }
-
-        echo "<h2>Teams</h2>";
-
-        
-       }
-    ?>
-    </table>
-    </div>
+    <h1>Existing Leagues</h1>
     <div>
          <form action="includes/createTeam.inc.php" method="post">
         <label>Team Name</label>
         <input placeholder="Enter the team name" name="team"/>
+        <br/>
+        <label>League</label>
+        <?php
+       if (empty($results)) {
+        echo "<p> No Existing Leagues - Please create one</p>";
+       } 
+       else {
+        echo '<select name="league" id="league">';
+        foreach($results as $row){
+            echo '<option value="'.$row['name'].'">' . $row['name'] . '</option>'; 
+        }
+        echo "</select>";
+
+       }
+    ?>
         <br/>
         <button>Submit</button>
     </form>

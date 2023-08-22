@@ -9,5 +9,8 @@
         <li class="nav-item">
             <a href="leagues.php">View Leagues</a>
         </li>
+        <li class="nav-item">
+            <a href="teams.php">View Teams</a>
+        </li>
     </ul>
 </div>
