@@ -7,7 +7,7 @@
         }
         else{
 
-        $query = "SELECT * FROM teams WHERE league ='$id'";
+        $query = "SELECT * FROM teams WHERE league ='$id' ORDER BY points";
 
         $statement = $pdo->prepare($query);
 
@@ -65,6 +65,34 @@
        }
     ?>
     </table>
+
+    <form action="includes/results.inc.php" method="post">
+        <label>Team One</label>
+        <?php
+        echo '<select name="team1" id="team1">';
+        foreach($results as $row){
+            echo '<option value="'.$row['name'].'">' . $row['name'] . '</option>'; 
+        }
+        echo "</select>";
+
+        ?>
+                <input placeholder="Goals Scored" id="goals2"/>
+
+    <br/>
+        <label>Team Two</label>
+        <?php
+        echo '<select name="team2" id="team2">';
+        foreach($results as $row){
+            echo '<option value="'.$row['name'].'">' . $row['name'] . '</option>'; 
+        }
+        echo "</select>";
+
+        ?>
+        <input placeholder="Goals Scored" id="goals1"/>
+       <br/>
+        
+        <button>Submit</button>
+    </form>
     </div>
 </body>
 </html>
