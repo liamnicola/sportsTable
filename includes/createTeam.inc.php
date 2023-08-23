@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     try {
         require_once "dbh.inc.php";
 
-        $query = "INSERT INTO teams (name, points, league) VALUES (?, 0, ?);";
+        $query = "INSERT INTO teams (name, points, wins, draws, losses, league) VALUES (?, 0, 0, 0, 0, ?);";
 
         $statement = $pdo->prepare($query);
 
